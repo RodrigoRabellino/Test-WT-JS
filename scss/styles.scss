@@ -1,0 +1,29 @@
+$font-stack: Helvetica, sans-serif;
+$back-color: #F2F2F2; 
+$text-color: black;
+$accent: #038C7F;
+
+body {
+    background: $back-color;
+    font: $font-stack;
+}
+
+.form-style {
+    background-color: $accent;
+}
+
+.section-slider{
+    background-color: $accent;
+}
+
+.section-article{
+    background-color: $accent;
+}
+
+.section-form{
+    background-color: $accent;
+}
+.footer-content{
+    text-align: center;
+    background-color: antiquewhite;
+}

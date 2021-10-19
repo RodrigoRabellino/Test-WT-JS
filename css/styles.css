@@ -1,0 +1,25 @@
+body {
+  background: #F2F2F2;
+  font: Helvetica, sans-serif;
+}
+
+.form-style {
+  background-color: #038C7F;
+}
+
+.section-slider {
+  background-color: #038C7F;
+}
+
+.section-article {
+  background-color: #038C7F;
+}
+
+.section-form {
+  background-color: #038C7F;
+}
+
+.footer-content {
+  text-align: center;
+  background-color: antiquewhite;
+}
