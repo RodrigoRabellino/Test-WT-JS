@@ -1,19 +1,24 @@
-const { src, dest, series, watch } = require("gulp");
+const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const cleanCSS = require("gulp-clean-css");
 const autoprefixer = require("gulp-autoprefixer");
 const image = require("gulp-image");
 const uglify = require("gulp-uglify");
 const concat = require("gulp-concat");
-const inject = require("gulp-inject");
+const injectjs = require("gulp-inject-js");
+const injectcss = require("gulp-inject-css");
 
 function copyHtml(){
   return src("./src/*.html").pipe(dest("dist"));
 }
 
 function injectJs(){
-  let indexjs = src("./dist/js/allScript.js");
-  return src("./dist/index.html").pipe(inject(indexjs)).pipe(dest("./dist"))
+  
+  return src("./dist/index.html").pipe(injectjs("./dist/js/*")).pipe(dest("./dist"))
+}
+
+function injectCSS(){
+  return src("./dist/index.html").pipe(injectcss("./dist/css/*")).pipe(dest("dist"))
 }
 
 function concatJs(){
@@ -36,17 +41,18 @@ function buildStyles() {
       })
     )
     .pipe(autoprefixer({ versions: ["last 2 browsers"] }))
-    .pipe(dest("./src/css"));
+    .pipe(dest("./dist/css"));
 }
 
 function cleanStlyes() {
-  return src("./src/css/**/*.css")
+  return src("./dist/css/**/*.css")
     .pipe(cleanCSS({ compatibility: "ie8" }))
-    .pipe(dest("dist"));
+    .pipe(dest("dist/css"));
 }
 
 exports.img = imgTask;
 exports.mini = series(concatJs, minifyJs);
-exports.inject = injectJs;
+exports.injectcss = injectCSS;
 
-exports.default = series(copyHtml,series(concatJs, minifyJs), injectJs , imgTask, buildStyles, cleanStlyes,);
+
+exports.default = series(imgTask, parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS);
