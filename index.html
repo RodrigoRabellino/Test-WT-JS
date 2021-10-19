@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Test WT</title>
     <script src="index.js"></script>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <header>
+    <!-- <img src="./resources/facebook.png" alt="facebook icon" class="facebook-icon"> -->
     <nav></nav>
   </header>
   <body>
     <section class="section-slider">
-      <label>soy el Slider</label>
+      <h1>soy el Slider</h1>
     </section>
     <section class="section-article">
-      <label>soy el Article</label>
+      <h2>soy el Article</h2>
     </section>
     <section class="section-form">
-      <div>
-        <form class="form-style">
-          <input
-            type="text"
-            name="formName"
-            id="formName"
-            placeholder="Nombre"
-          />
-          <input
-            type="text"
-            name="formSurname"
-            id="formSurname"
-            placeholder="Apellido"
-          />
-          <input
-            type="email"
-            name="formEmail"
-            id="formEmail"
-            placeholder="Email"
-          />
-          <select id="formCountry" name="formCountry"></select>
-          <select id="formCity" name="formCity"></select>
-          <input
-            type="text"
-            name="formCi"
-            id="formCi"
-            placeholder="C.I"
-            maxlength="8"
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-          />
-          <input type="checkbox" name="formTerms" id="formTerms" />
-          <label for="formTerms">Acepto las bases y condiciones</label>
-        </form>
-      </div>
+      <form class="form-style">
+        <input
+          type="text"
+          name="formName"
+          id="formName"
+          placeholder="Nombre"
+          class="form-name"
+        />
+        <input
+          type="text"
+          name="formSurname"
+          id="formSurname"
+          placeholder="Apellido"
+          class="form-surname"
+        />
+        <input
+          type="email"
+          name="formEmail"
+          id="formEmail"
+          placeholder="Email"
+          class="form-email"
+        />
+        <select
+          id="formCountry"
+          name="formCountry"
+          class="form-country"
+        ></select>
+        <select id="formCity" name="formCity" class="form-city"></select>
+        <input
+          type="text"
+          name="formCi"
+          id="formCi"
+          placeholder="C.I"
+          maxlength="8"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+          class="form-ci"
+        />
+        <input
+          type="checkbox"
+          name="formTerms"
+          id="formTerms"
+          class="form-terms"
+        />
+        <label for="formTerms">Acepto las bases y condiciones</label>
+        <button type="submit" id="formSend" class="btn-send">Enviar</button>
+      </form>
     </section>
   </body>
   <footer>

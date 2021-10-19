@@ -1,0 +1,38 @@
+@use "global";
+
+.form-style {
+    @include box-flex(stretch, center, nowrap);
+}
+
+.form-inputs{
+    
+}
+
+
+// .form-name {
+    
+// }
+
+// .form-surname {
+// }
+
+// .form-email {
+// }
+
+// .form-country{
+// }
+
+// .form-city {
+// }
+
+// .form-ci {
+// }
+
+// .form-terms{
+
+// }
+
+.btn-send {
+  @extend .btn;
+}
+
