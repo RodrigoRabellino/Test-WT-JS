@@ -21,7 +21,7 @@ function concatJs(){
 }
 
 function minifyJs(){
-  return src("./src/js/allScript.js").pipe(uglify()).pipe(dest("dist/js"))
+  return src("./dist/js/allScript.js").pipe(uglify()).pipe(dest("./dist/js"))
 }
 
 function imgTask(){
