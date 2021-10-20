@@ -53,6 +53,7 @@ function cleanStlyes() {
 exports.img = imgTask;
 exports.mini = series(concatJs, minifyJs);
 exports.injectcss = injectCSS;
+exports.updatecss = function(){ watch("./src/scss/*.scss", series(parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS))}
 
 
-exports.default = series(imgTask, parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS);
+exports.default = series(parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS);

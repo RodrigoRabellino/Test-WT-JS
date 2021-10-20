@@ -73,8 +73,7 @@ h3 {
   border-radius: 2px;
   padding: 0.7em 1.5em;
   cursor: pointer;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 0 auto;
   font-size: 1.5rem;
   font-weight: 500;
   background-color: $btn-color;
@@ -82,11 +81,4 @@ h3 {
 
 .btn-buy{
   @extend .btn
-}
-
-@mixin box-flex($p, $c, $w){
-  display: flex;
-  justify-content: $p;
-  align-items: $c;
-  flex-wrap: $w;
 }

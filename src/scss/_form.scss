@@ -1,38 +1,95 @@
 @use "global";
 
-.form-style {
-    @include box-flex(stretch, center, nowrap);
+$primary: #11998e;
+$secondary: #38ef7d;
+$textColor: rgb(36, 33, 33);
+$gray: #9b9b9b;
+
+.form-style { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  min-height: auto;
+  font-size: 1.5rem; 
 }
 
-.form-inputs{
-    
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 1px;
+  width: 100%;
+}
+
+.form__group__half{
+  @extend .form__group;
+  width: 47%; 
+}
+
+.form__group__button{
+  @extend .form__group;
+  display: flex;
+  justify-content: center; 
+}
+
+.form__field { 
+  font-family: inherit;
+  width: 100%; 
+  height: auto;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $textColor;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label { 
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
 }
 
 
-// .form-name {
-    
-// }
 
-// .form-surname {
-// }
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
 
-// .form-email {
-// }
-
-// .form-country{
-// }
-
-// .form-city {
-// }
-
-// .form-ci {
-// }
-
-// .form-terms{
-
-// }
-
-.btn-send {
+.btn-send { 
   @extend .btn;
-}
-
+} 

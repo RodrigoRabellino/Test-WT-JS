@@ -6,7 +6,3 @@ header{
     top:0;
     width: 100%;
 }
-
-.form-style {
-    @include box-flex(space-between, center, nowrap);
-}
