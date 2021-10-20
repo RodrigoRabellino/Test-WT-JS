@@ -8,29 +8,34 @@ const concat = require("gulp-concat");
 const injectjs = require("gulp-inject-js");
 const injectcss = require("gulp-inject-css");
 
-function copyHtml(){
+function copyHtml() {
   return src("./src/*.html").pipe(dest("dist"));
 }
 
-function injectJs(){
-  
-  return src("./dist/index.html").pipe(injectjs("./dist/js/*")).pipe(dest("./dist"))
+function injectJs() {
+  return src("./dist/index.html")
+    .pipe(injectjs("./dist/js/*"))
+    .pipe(dest("./dist"));
 }
 
-function injectCSS(){
-  return src("./dist/index.html").pipe(injectcss("./dist/css/*")).pipe(dest("dist"))
+function injectCSS() {
+  return src("./dist/index.html")
+    .pipe(injectcss("./dist/css/*"))
+    .pipe(dest("dist"));
 }
 
-function concatJs(){
-  return src("./src/js/*.js").pipe(concat("allScript.js")).pipe(dest("./dist/js"))
+function concatJs() {
+  return src("./src/js/*.js")
+    .pipe(concat("allScript.js"))
+    .pipe(dest("./dist/js"));
 }
 
-function minifyJs(){
-  return src("./dist/js/allScript.js").pipe(uglify()).pipe(dest("./dist/js"))
+function minifyJs() {
+  return src("./dist/js/allScript.js").pipe(uglify()).pipe(dest("./dist/js"));
 }
 
-function imgTask(){
-  return src("./src/images/**/*").pipe(image()).pipe(dest("dist/images"))
+function imgTask() {
+  return src("./src/images/**/*").pipe(image()).pipe(dest("dist/images"));
 }
 
 function buildStyles() {
@@ -53,7 +58,21 @@ function cleanStlyes() {
 exports.img = imgTask;
 exports.mini = series(concatJs, minifyJs);
 exports.injectcss = injectCSS;
-exports.updatecss = function(){ watch("./src/scss/*.scss", series(parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS))}
+exports.updatecss = function () {
+  watch(
+    "./src/scss/*.scss",
+    series(
+      parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
+      cleanStlyes,
+      injectJs,
+      injectCSS
+    )
+  );
+};
 
-
-exports.default = series(parallel(copyHtml, series(concatJs, minifyJs), buildStyles), cleanStlyes, injectJs, injectCSS);
+exports.default = series(
+  parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
+  cleanStlyes,
+  injectJs,
+  injectCSS
+);

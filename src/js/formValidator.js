@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("form").addEventListener("submit", formValidate);
 });
 
-function formValidate(e){
+function formValidate(e) {
   e.preventDefault();
   const emailRegex =
     /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -26,5 +26,4 @@ function formValidate(e){
   if (!validarCedula(userCI)) {
     return;
   }
-    console.log(userName)
-};
+}

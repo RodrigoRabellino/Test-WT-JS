@@ -1,3 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(e){
-    setSelects();
-})
+document.addEventListener("DOMContentLoaded", function (e) {
+  setSelects();
+});
