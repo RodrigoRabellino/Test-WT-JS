@@ -7,9 +7,14 @@ const uglify = require("gulp-uglify");
 const concat = require("gulp-concat");
 const injectjs = require("gulp-inject-js");
 const injectcss = require("gulp-inject-css");
+const cleanfiles = require("gulp-clean");
 
 function copyHtml() {
   return src("./src/*.html").pipe(dest("dist"));
+}
+
+function clean() {
+  return src("./dist").pipe(cleanfiles());
 }
 
 function injectJs() {
@@ -58,10 +63,12 @@ function cleanStlyes() {
 exports.img = imgTask;
 exports.mini = series(concatJs, minifyJs);
 exports.injectcss = injectCSS;
+
 exports.updatecss = function () {
   watch(
     "./src/scss/*.scss",
     series(
+      clean,
       parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
       cleanStlyes,
       injectJs,
@@ -71,6 +78,8 @@ exports.updatecss = function () {
 };
 
 exports.default = series(
+  clean,
+  imgTask,
   parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
   cleanStlyes,
   injectJs,

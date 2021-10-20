@@ -10,12 +10,23 @@
     <nav></nav>
   </header>
   <body>
-    <section class="section-slider"></section>
-    <section class="section-article">
-      <h2>soy el Article</h2>
+    <section class="section__slider"></section>
+    <section class="section__article">
+      <h3>Últimos Artículos</h3>
+      <hr>
+      <div class="article__list__container"> 
+        <ul id="articlesUl" class="article__grid">
+        </ul>
+      </div>
+
     </section>
-    <section class="section-form">
-      <form id="form" class="form-style">
+    <section class="section__form">
+      <form id="form" class="form__style">
+        <div class="form__title">
+          <h3>Formulario</h3>
+          <hr>
+        </div>
+        
           <div class="form__group__half field">
             <input
               type="input"
@@ -98,6 +109,6 @@
   </body>
   <footer>
     <!-- inject-js js/allScript.js -->
-    <p class="footer-content">Rodrigo Rabellino 2021®</p>
+    <p class="footer__content">Rodrigo Rabellino 2021®</p>
   </footer>
 </html>

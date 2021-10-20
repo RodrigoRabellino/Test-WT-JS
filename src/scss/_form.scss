@@ -5,7 +5,7 @@ $secondary: #38ef7d;
 $textColor: rgb(36, 33, 33);
 $gray: #9b9b9b;
 
-.form-style { 
+.form__style { 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -15,6 +15,11 @@ $gray: #9b9b9b;
   align-content: center;
   min-height: auto;
   font-size: 1.5rem; 
+}
+
+.form__title{
+  @extend .form__group;
+  text-align: center;
 }
 
 .form__group {
@@ -34,6 +39,7 @@ $gray: #9b9b9b;
   display: flex;
   justify-content: center; 
 }
+
 
 .form__field { 
   font-family: inherit;

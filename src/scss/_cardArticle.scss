@@ -1,0 +1,32 @@
+@import "global";
+
+.card__container{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    height: 250px;
+    width: 170px;
+}
+
+.card__desc{
+    margin: 5px;
+    text-align: left;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+.card__title{
+    font-size: 13px;
+}
+
+.card__image{
+    width: auto;
+    height: 100px;
+    border-radius: 10px 10px 0 0;
+}
