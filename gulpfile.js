@@ -1,4 +1,4 @@
-const { src, dest, series, watch, parallel } = require("gulp");
+const { src, dest, series, watch, parallel, task } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const cleanCSS = require("gulp-clean-css");
 const autoprefixer = require("gulp-autoprefixer");
@@ -19,7 +19,7 @@ function clean() {
 
 function injectJs() {
   return src("./dist/index.html")
-    .pipe(injectjs("./dist/js/*"))
+    .pipe(injectjs("./dist/js/allScript.js"))
     .pipe(dest("./dist"));
 }
 
@@ -60,8 +60,31 @@ function cleanStlyes() {
     .pipe(dest("dist/css"));
 }
 
+function injectSlickcss() {
+  task(
+    src("./src/scss/slick/*.scss").pipe(sass()).pipe(dest("./dist/css/slick"))
+  );
+  task(
+    src("./dist/index.html")
+      .pipe(injectcss("./dist/css/slick/slick.css"))
+      .pipe(dest("./dist"))
+  );
+
+  return src("./dist/index.html")
+    .pipe(injectcss("./dist/css/slick/slick-theme.css"))
+    .pipe(dest("./dist"));
+}
+
+function injectSlickJs() {
+  task(src("./src/js/slick/*.js").pipe(uglify()).pipe(dest("./dist/js/slick")));
+
+  return src("./dist/index.html")
+    .pipe(injectjs("./dist/js/slick/slick/slick.min.js"))
+    .pipe(dest("./dist"));
+}
+
 exports.img = imgTask;
-exports.mini = series(concatJs, minifyJs);
+exports.slick = injectSlickcss;
 exports.injectcss = injectCSS;
 
 exports.updatecss = function () {
@@ -82,6 +105,9 @@ exports.default = series(
   imgTask,
   parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
   cleanStlyes,
+
+  injectSlickcss,
+  injectSlickJs,
   injectJs,
   injectCSS
 );

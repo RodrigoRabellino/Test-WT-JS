@@ -4,13 +4,23 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Test WT</title>
     <!-- inject-css css/styles.css -->
+
+    <!-- inject-css css/slick/slick.css -->
+    <!-- inject-css css/slick/slick-theme.css -->
   </head>
   <header>
     <!-- <img src="./resources/facebook.png" alt="facebook icon" class="facebook-icon"> -->
     <nav></nav>
   </header>
   <body>
-    <section class="section__slider"></section>
+    <section class="section__slider">
+      <div id="slick" class="slick__container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </section>
     <section class="section__article">
       <h3>Últimos Artículos</h3>
       <hr>
@@ -108,7 +118,10 @@
     </section>
   </body>
   <footer>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <!-- inject-js js/allScript.js -->
+
+    <!-- inject-js js/slick/slick.min.js -->
     <p class="footer__content">Rodrigo Rabellino 2021®</p>
   </footer>
 </html>
