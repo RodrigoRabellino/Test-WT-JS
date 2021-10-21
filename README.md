@@ -1,4 +1,4 @@
-# Foobar
+# Prueba tecnica JS WT frontend
 
 Prueba realizada para Wunderman Thompson (Frontend Developer Task)
 
