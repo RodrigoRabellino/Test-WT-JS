@@ -8,7 +8,7 @@ function showError(input, error) {
 function hideError(input) {
   input.style.background = "";
   const label = document.getElementById(`error-${input.id}`);
-  label.innerHTML= "";
+  label.innerHTML = "";
 }
 
 function isEmpty(element, message) {
@@ -27,83 +27,95 @@ function validateLength(element, message, length) {
   return true;
 }
 
-function validateForm({
-  userName,
-  userLastname,
-  userEmail,
-  userDepto,
-  userCity,
-  userCI,
-  terms,
-}) {
-  let errors = 0;
-  const emailRegex =
-    /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+class InputsController {
+  constructor() {
+    const userName = document.getElementById("firstName");
+    const userLastname = document.getElementById("lastName");
+    const userEmail = document.getElementById("email");
+    const userDepto = document.getElementById("depto");
+    const userCity = document.getElementById("city");
+    const userCI = document.getElementById("ci");
+    const terms = document.getElementById("terms");
 
-  if (
-    isEmpty(userName, "Ingrese un Nombre.") ||
-    !validateLength(userName, "Ingrese al menos dos caracteres.", 2)
-  ) {
-    errors++;
+    this.inputs = {
+      userName,
+      userLastname,
+      userEmail,
+      userDepto,
+      userCity,
+      userCI,
+      terms,
+    };
   }
 
-  if (
-    isEmpty(userLastname, "Ingrese un apellido") ||
-    !validateLength(userLastname, "ingrese al menos dos caracteres.", 2)
-  ) {
-    errors++;
-  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    const valid = this.validateForm();
+    if (valid) {
+      console.log("enviar form");
+      e.target.reset();
+      Object.values(this.inputs).forEach(hideError);
+    }
+  };
 
-  if (isEmpty(userEmail, "Ingrese un email.")) {
-    errors++;
-  } else if (!emailRegex.test(userEmail.value)) {
-    errors++;
-    showError(userEmail, "ingrese un email valido");
-  }
+  addFocusListener = () => {
+    Object.values(this.inputs).forEach((input) => {
+      input.addEventListener("focus", () => {
+        hideError(input);
+      });
+    });
+  };
 
-  if (isEmpty(userDepto, "Ingrese un departamento.")) {
-    errors++;
-  }
-  if (isEmpty(userCity, "Ingrese una ciudad.")) {
-    errors++;
-  }
+  validateForm = () => {
+    const {
+      userName,
+      userLastname,
+      userEmail,
+      userDepto,
+      userCity,
+      userCI,
+      terms,
+    } = this.inputs;
+    let errors = 0;
+    const emailRegex =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-  if (isEmpty((userCI, "Ingrese una C.I."))) {
-    errors++;
-  } else if (!validarCedula(userCI.value)) {
-    showError(userCI, "Ingrese una C.I. valida");
-  }
-  if (!terms.checked) {
-    showError(terms, "Debe aceptar las bases y condiciones.");
-  }
-  return !errors;
-}
+    if (
+      isEmpty(userName, "Ingrese un Nombre.") ||
+      !validateLength(userName, "Ingrese al menos dos caracteres.", 2)
+    ) {
+      errors++;
+    }
 
-function onSubmit(e) {
-  e.preventDefault();
-  const userName = document.getElementById("firstName");
-  const userLastname = document.getElementById("lastName");
-  const userEmail = document.getElementById("email");
-  const userDepto = document.getElementById("depto");
-  const userCity = document.getElementById("city");
-  const userCI = document.getElementById("ci");
-  const terms = document.getElementById("terms");
+    if (
+      isEmpty(userLastname, "Ingrese un apellido") ||
+      !validateLength(userLastname, "ingrese al menos dos caracteres.", 2)
+    ) {
+      errors++;
+    }
 
-  const inputs= {
-    userName,
-    userLastname,
-    userEmail,
-    userDepto,
-    userCity,
-    userCI,
-    terms,
-  }
+    if (isEmpty(userEmail, "Ingrese un email.")) {
+      errors++;
+    } else if (!emailRegex.test(userEmail.value)) {
+      errors++;
+      showError(userEmail, "ingrese un email valido");
+    }
 
-  const valid = validateForm(inputs);
+    if (isEmpty(userDepto, "Ingrese un departamento.")) {
+      errors++;
+    }
+    if (isEmpty(userCity, "Ingrese una ciudad.")) {
+      errors++;
+    }
 
-  if(valid){
-    console.log("enviar form");
-    e.target.reset();
-    Object.values(inputs).forEach(hideError)
-  }
+    if (isEmpty((userCI, "Ingrese una C.I."))) {
+      errors++;
+    } else if (!validarCedula(userCI.value)) {
+      showError(userCI, "Ingrese una C.I. valida");
+    }
+    if (!terms.checked) {
+      showError(terms, "Debe aceptar las bases y condiciones.");
+    }
+    return !errors;
+  };
 }

@@ -5,16 +5,18 @@ $(document).ready(function () {
     slidesToScroll: 1,
     autoplay: false,
     pauseOnHover: true,
-    centerModel:true,
-    centerPadding:'60px',
+    centerModel: true,
+    centerPadding: "60px",
     responsive: [
       {
         breakpoint: 600,
-        settings: "unlisk"
+        settings: "unlisk",
       },
     ],
   });
   setSelects();
   setArticles();
-  document.getElementById("form").addEventListener("submit", onSubmit);
+  const inputsController = new InputsController(); 
+  inputsController.addFocusListener();
+  document.getElementById("form").addEventListener("submit", inputsController.onSubmit);
 });

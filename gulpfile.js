@@ -14,7 +14,7 @@ function copyHtml() {
 }
 
 function clean() {
-  return src("./dist").pipe(cleanfiles());
+  return src("./dist", { read: false, allowEmpty: true }).pipe(cleanfiles());
 }
 
 function injectAllJs() {
