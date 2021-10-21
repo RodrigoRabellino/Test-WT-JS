@@ -1,9 +1,6 @@
 $( document ).ready(function() {
-  // $('.slick__container').slick({
-  //   //setting-name: setting-value
-  // });
+  $('.slick__container').slick();
   setSelects();
   setArticles();
-  document.getElementById("form").addEventListener("submit", formValidate);
-  
+  document.getElementById("form").addEventListener("submit", onSubmit);
 });

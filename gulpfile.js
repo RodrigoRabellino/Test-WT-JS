@@ -17,20 +17,20 @@ function clean() {
   return src("./dist").pipe(cleanfiles());
 }
 
-function injectJs() {
+function injectAllJs() {
   return src("./dist/index.html")
     .pipe(injectjs("./dist/js/allScript.js"))
     .pipe(dest("./dist"));
 }
 
-function injectCSS() {
+function injectAllCSS() {
   return src("./dist/index.html")
     .pipe(injectcss("./dist/css/*"))
     .pipe(dest("dist"));
 }
 
 function concatJs() {
-  return src("./src/js/*.js")
+  return src("./src/js/**/*.js")
     .pipe(concat("allScript.js"))
     .pipe(dest("./dist/js"));
 }
@@ -60,32 +60,9 @@ function cleanStlyes() {
     .pipe(dest("dist/css"));
 }
 
-function injectSlickcss() {
-  task(
-    src("./src/scss/slick/*.scss").pipe(sass()).pipe(dest("./dist/css/slick"))
-  );
-  task(
-    src("./dist/index.html")
-      .pipe(injectcss("./dist/css/slick/slick.css"))
-      .pipe(dest("./dist"))
-  );
-
-  return src("./dist/index.html")
-    .pipe(injectcss("./dist/css/slick/slick-theme.css"))
-    .pipe(dest("./dist"));
-}
-
-function injectSlickJs() {
-  task(src("./src/js/slick/*.js").pipe(uglify()).pipe(dest("./dist/js/slick")));
-
-  return src("./dist/index.html")
-    .pipe(injectjs("./dist/js/slick/slick/slick.min.js"))
-    .pipe(dest("./dist"));
-}
 
 exports.img = imgTask;
-exports.slick = injectSlickcss;
-exports.injectcss = injectCSS;
+exports.injectcss = injectAllCSS;
 
 exports.updatecss = function () {
   watch(
@@ -94,32 +71,30 @@ exports.updatecss = function () {
       clean,
       parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
       cleanStlyes,
-      injectJs,
-      injectCSS
+      injectAllJs,
+      injectAllCSS
     )
   );
 };
 
-exports.updateform = function(){
-  watch("./src/js/*.js",
-  series(
-    clean,
-    parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
-    cleanStlyes,
-    injectSlickcss,
-    injectSlickJs,
-    injectJs,
-    injectCSS
-  ))
-}
+exports.updateform = function () {
+  watch(
+    "./src/js/*.js",
+    series(
+      clean,
+      parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
+      cleanStlyes,
+      injectAllJs,
+      injectAllCSS
+    )
+  );
+};
 
 exports.default = series(
   clean,
   imgTask,
   parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
   cleanStlyes,
-  injectSlickcss,
-  injectSlickJs,
-  injectJs,
-  injectCSS
+  injectAllCSS,
+  injectAllJs
 );
