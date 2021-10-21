@@ -100,12 +100,24 @@ exports.updatecss = function () {
   );
 };
 
+exports.updateform = function(){
+  watch("./src/js/*.js",
+  series(
+    clean,
+    parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
+    cleanStlyes,
+    injectSlickcss,
+    injectSlickJs,
+    injectJs,
+    injectCSS
+  ))
+}
+
 exports.default = series(
   clean,
   imgTask,
   parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
   cleanStlyes,
-
   injectSlickcss,
   injectSlickJs,
   injectJs,

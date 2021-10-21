@@ -23,96 +23,90 @@
     </section>
     <section class="section__article">
       <h3>Últimos Artículos</h3>
-      <hr>
-      <div class="article__list__container"> 
-        <ul id="articlesUl" class="article__grid">
-        </ul>
+      <hr />
+      <div class="article__list__container">
+        <ul id="articlesUl" class="article__grid"></ul>
       </div>
-
     </section>
     <section class="section__form">
+      <div class="form__title">
+        <h3>Formulario</h3>
+      </div>
+      <hr/>
       <form id="form" class="form__style">
-        <div class="form__title">
-          <h3>Formulario</h3>
-          <hr>
+        
+        
+        <div class="form__group__half field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="Nombre"
+            name="firstName"
+            id="firstName"
+          />
+          <label for="firstName" class="form__label">Nombre</label>
+          <span class="label__error" id="spanfirstName"></span>
         </div>
-        
-          <div class="form__group__half field">
-            <input
-              type="input"
-              class="form__field"
-              placeholder="Nombre"
-              name="nameForm"
-              id="nameForm"
-              required
-            />
-            <label for="nameForm" class="form__label">Nombre</label>
-          </div>
-          <div class="form__group__half field">
-            <input
-              type="input"
-              class="form__field"
-              placeholder="Apellido"
-              name="surnameForm"
-              id="surnameForm"
-              required
-            />
-            <label for="surnameForm" class="form__label">Apellido</label>
-          </div>
-        
+        <div class="form__group__half field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="Apellido"
+            name="lastName"
+            id="lastName"
+          />
+          <label for="lastName" class="form__label">Apellido</label>
+          <span class="label__error" id="spanlastName"></span>
+        </div>
         <div class="form__group field">
           <input
             type="input"
             class="form__field"
             placeholder="Email"
-            name="emailForm"
-            id="emailForm"
-            required
+            name="email"
+            id="email"
           />
-          <label for="emailForm" class="form__label">Email</label>
+          <label for="email" class="form__label">Email</label>
+          <span class="label__error" id="spanemail"></span>
         </div>
         <div class="form__group__half field">
-          <select
-            id="formDpto"
-            name="formDpto"
-            class="form__field"
-          >
-          <option value="" disabled selected hidden>Departamento</option>
-        </select>
-          <label for="formDpto" class="form__label">Departamento</label>
+          <select id="depto" name="depto" class="form__field">
+            <option value="" disabled selected hidden>Departamento</option>
+          </select>
+          <label for="depto" class="form__label">Departamento</label>
+          <span class="label__error" id="spandepto"></span>
         </div>
         <div class="form__group__half field">
-          <select id="formCity" name="formCity" class="form__field">
+          <select id="city" name="city" class="form__field">
             <option value="" disabled selected hidden>Localidad</option>
           </select>
-          <label for="formCity" class="form__label">Ciudad</label>
+          <label for="city" class="form__label">Ciudad</label>
+          <span class="label__error" id="spancity"></span>
         </div>
-        <div class="form__group__half field"> 
+        <div class="form__group__half field">
           <input
             type="input"
             class="form__field"
             placeholder="CI"
-            name="ciForm"
-            id="ciForm"
+            name="ci"
+            id="ci"
             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
             maxlength="8"
-            minlength="7"
-            required
           />
-          <label for="ciForm" class="form__label">C.I.</label>
-        </div>  
+          <label for="ci" class="form__label">C.I.</label>
+          <span class="label__error" id="spanci"></span>
+        </div>
         <div class="form__group__half field">
           <input
-          type="checkbox"
-          name="formTerms"
-          id="formTerms"
-          class="form-terms"
-          required
-        />
-        <label for="formTerms">Acepto las bases y condiciones</label>
+            type="checkbox"
+            name="formTerms"
+            id="formTerms"
+            class="form-terms"
+          />
+          <label for="formTerms">Acepto las bases y condiciones</label>
         </div>
         <div class="form__group__button field">
-          <button type="submit" id="formSend" class="btn-send">Enviar</button>
+          <button type="submit" id="formSend" class="btn__send">Enviar</button>
         </div>
       </form>
     </section>

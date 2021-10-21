@@ -13,8 +13,8 @@ function setSelectOption(selectElem, option) {
 }
 
 function setSelects() {
-  const selectDpto = document.getElementById("formDpto");
-  const selectCity = document.getElementById("formCity");
+  const selectDpto = document.getElementById("depto");
+  const selectCity = document.getElementById("city");
 
   Object.keys(dptosLocs).forEach((dpto) => {
     setSelectOption(selectDpto, dpto);
