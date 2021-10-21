@@ -61,14 +61,12 @@ function cleanStlyes() {
 }
 
 
-exports.img = imgTask;
-exports.injectcss = injectAllCSS;
-
 exports.updatecss = function () {
   watch(
     "./src/scss/*.scss",
     series(
       clean,
+      imgTask,
       parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
       cleanStlyes,
       injectAllJs,
@@ -77,11 +75,12 @@ exports.updatecss = function () {
   );
 };
 
-exports.updateform = function () {
+exports.updatejs = function () {
   watch(
-    "./src/js/*.js",
+    "./src",
     series(
       clean,
+      imgTask,
       parallel(copyHtml, series(concatJs, minifyJs), buildStyles),
       cleanStlyes,
       injectAllJs,

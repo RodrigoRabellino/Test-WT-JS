@@ -1,7 +1,7 @@
 const articlesList = [
   {
     title: "1Lorem ipsum dolor sit amet",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum earum illo quo repellat, molestiae quas nisi consectetur doloribus eligendi corrupti obcaecati impedit illum officia in aut magni. Sit, facilis omnis.",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum earum illo quo repellat, molestiae quas nisi consectetur doloribus eligendi corrupti obcaecati impedit illum officia in aut magni. Sit, facilis omnis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum earum illo quo repellat, molestiae quas nisi consectetur doloribus eligendi corrupti obcaecati impedit illum officia in aut magni. Sit, facilis omnis.",
   },
   {
     title: "2Lorem ipsum dolor sit amet",
@@ -51,7 +51,7 @@ function setArticleContainer(article){
     const articleDesc = document.createElement("p");
 
     articleImg.setAttribute("class", "card__image");
-    articleImg.setAttribute("src", "https://via.placeholder.com/150x150")
+    articleImg.setAttribute("src", "https://source.unsplash.com/random/150x150")
     
     articleTitle.setAttribute("class" , "card__title");
     articleTitle.appendChild(document.createTextNode(`${article.title}`));

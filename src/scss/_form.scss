@@ -102,3 +102,13 @@ $gray: #9b9b9b;
 .btn__send {
   @extend .btn;
 } 
+
+@media (max-width: 550px) {
+  .form__style{
+    flex-direction: column;
+
+  }
+  .form__group__half{
+    width: 100%;
+  }
+}

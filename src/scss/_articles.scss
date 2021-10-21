@@ -4,20 +4,22 @@ $container-max-width: 84rem;
 $gutter: 1em;
 
 .article__list__container {
+    display: flex;
 }
 
-// .article__grid {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-//   grid-gap: 1rem;
-// }
 
 .article__grid{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     grid-template-columns: 4;
     column-count: 4;
     gap: 15px 15px;
+}
+
+@media (max-width: 519px){
+    .article__grid{
+        justify-content: center;
+    }
 }

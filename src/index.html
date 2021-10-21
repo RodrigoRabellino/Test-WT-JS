@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Test WT</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
     <!-- inject-css css/styles.css -->
   </head>
   
@@ -13,14 +15,56 @@
       <!-- <img src="./resources/facebook.png" alt="facebook icon" class="facebook-icon"> -->
       <nav></nav>
     </header>
+    
     <section class="section__slider">
-      <div id="slick" class="slick__container">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div id="slick" class="single-item">
+        <div class="product__container">
+          <div class="product__info__container">
+            <h4 class="product__title">PRODUCT</h4>
+            <h4 class="product__title__number">ONE</h4>
+            <button id="btnBuy" class="btn__buy">COMPRAR</button>
+          </div>
+          <div>
+            <img src="./images/splash/splashprice3.png" class="product__img__splash" >
+          </div>
+            
+        </div>
+        <div class="product__container">
+          <div class="product__info__container">
+            <h4 class="product__title">PRODUCT</h4>
+            <h4 class="product__title__number">TWO</h4>
+            <button id="btnBuy" class="btn__buy">COMPRAR</button>
+          </div>
+          <div>
+            <img src="./images/splash/splashprice4.png" class="product__img__splash" >
+          </div>
+            
+        </div>
+        <div class="product__container">
+          <div class="product__info__container">
+            <h4 class="product__title">PRODUCT</h4>
+            <h4 class="product__title__number">THRE</h4>
+            <button id="btnBuy" class="btn__buy">COMPRAR</button>
+          </div>
+          <div>
+            <img src="./images/splash/splashprice5.png" class="product__img__splash" >
+          </div>
+            
+        </div>
+        <div class="product__container">
+          <div class="product__info__container">
+            <h4 class="product__title">PRODUCT</h4>
+            <h4 class="product__title__number">FOUR</h4>
+            <button id="btnBuy" class="btn__buy">COMPRAR</button>
+          </div>
+          <div>
+            <img src="./images/splash/splashprice6.png" class="product__img__splash" >
+          </div>
+        </div>
+        
       </div>
     </section>
+  
     <section class="section__article">
       <h3>Últimos Artículos</h3>
       <hr />
@@ -106,16 +150,15 @@
           <span class="label__error" id="error-terms"></span>
         </div>
         <div class="form__group__button field">
-          <button type="submit" id="formSend" class="btn__send">Enviar</button>
+          <button type="submit" id="formSend" class="btn__send">ENVIAR</button>
         </div>
       </form>
     </section>
     <footer>
-      <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
       <!-- inject-js js/allScript.js -->
       <p class="footer__content">Rodrigo Rabellino 2021®</p>
     </footer>
   </body>
-  
 </html>
